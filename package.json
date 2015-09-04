@@ -1,0 +1,24 @@
+{
+  "name": "gulp-jsonjade",
+  "version": "0.0.1",
+  "description": "Accepts json as file content and a jade template as parameter and outputs html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pushrocks/gulp-jsonjade.git"
+  },
+  "keywords": [
+    "json",
+    "jade",
+    "template"
+  ],
+  "author": "Smart Coordination GmbH <office@push.rocks> (https://push.rocks)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pushrocks/gulp-jsonjade/issues"
+  },
+  "homepage": "https://github.com/pushrocks/gulp-jsonjade"
+}
