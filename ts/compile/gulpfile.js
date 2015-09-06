@@ -3,9 +3,9 @@ var gulp = require("gulp"),
 	gulpTypescript = require("gulp-typescript");
 
 gulp.task('compileTS', function() {
-	var stream = gulp.src('../*.ts')
+	var stream = gulp.src('../index.ts')
 	  .pipe(gulpTypescript({
-	  	out: "gulpfile.js"
+	  	out: "index.js"
 	  }))
 	  .pipe(gulp.dest("../../"));
 	return stream;
