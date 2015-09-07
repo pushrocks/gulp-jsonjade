@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/pushrocks/gulp-jsonjade",
   "dependencies": {
-    "through2": ">= 1.2.0",
-    "optimist": ">= 0.1.0"
+    "through2": ">= 1.2.0"
   }
 }
