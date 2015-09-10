@@ -1,5 +1,5 @@
 # gulp-jsonjade
-Accepts json as file object and a jade template as parameter and outputs html.
+Accepts json as file content and a jade template as parameter and outputs json at file.data and jade at file.content.
 
 Example
 ```javascript

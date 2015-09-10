@@ -1,10 +1,10 @@
 /// <reference path="typings/tsd.d.ts" />
-var path, through;
+var path, through; mojoActive
 
 through = require("through2");
 path = require("path");
 
-module.exports = (jadeTemplate,mojo = undefined) => {
+module.exports = (jadeTemplate,jsonObjectName,mojo = undefined) => {
     /* -------------------------------------------------------------------------
     ------------------------- helper functions ----------------------------------
     --------------------------------------------------------------------------
@@ -12,8 +12,13 @@ module.exports = (jadeTemplate,mojo = undefined) => {
     
     if (mojo != undefined) {
         mojo.log("now prepocessing blog");
+        mojoActive = true;
     } else {
         console.log('you do not seem to use mojo.io');
+        mojo = {}
+        mojo.log = function(logthis) {
+            console.log(logthis);
+        }
     }
 
     /*--------------------------------------------------------------------------
@@ -34,13 +39,15 @@ module.exports = (jadeTemplate,mojo = undefined) => {
 
         //make sure we make the json data available through the file.data object
         jsonString = String(file.contents);
-        //create file.data
-        file.data = {};
+        //create file.data in case it doesn't exist
+        file.data = file.data | {};
         //make mojo settings available for jade through mojo.something
-        file.data.mojo = mojo.settings;
+        if (mojoActive) {
+            file.data.mojo = mojo.settings;
+        }
         //make blog data available for jade through data.blog
-        file.data.blog = JSON.parse(jsonString);
-        file.data.blog.markdown = file.data.blog.body;
+        file.data.[jsonObjectName] = JSON.parse(jsonString);
+        file.data.[jsonObjectName].markdown = file.data.blog.body;
 
         // now that we have the original json moved to file.data we replace file.contents
         file.contents = new Buffer(jadeTemplate.content);
