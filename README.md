@@ -4,7 +4,7 @@ Accepts json as file content and a jade template as parameter and outputs json a
 ## build status
 [![Build Status](https://travis-ci.org/pushrocks/gulp-jsonjade.svg?branch=master)](https://travis-ci.org/pushrocks/gulp-jsonjade)
 
-## how to use this gulp plugin
+## how to use
 Example
 ```javascript
 example here
