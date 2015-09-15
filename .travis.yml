@@ -1,0 +1,10 @@
+language: node_js
+deploy:
+  provider: npm
+  email: npm@smart-coordination.com
+  api_key:
+    secure: TnPRtN9aDOEOV2xNbJZBXSxd0LXKSLHb1YQG8WfAxf5QsllGaeDwdI957PJY+x4r0MdlVpGRx+geF1bcRGQtD7x8SKD2xhXCcP5uDUELPyr4EdhgyTpDE6gzcYSHiZng0meOYV2lMrn+zN1JAFUBm+wtX4flKNQTtIeAMUMIfUE4PFDOI9eC0cS3tCdfsemYAdwb4tHghz8yMBK2e0YpGsvSJ2aHWF9zEs35SpLPfG4fcMB8VfwaxA9VMsshAuiNx+YTpP0iL6yF9+TrCsBRSUkZmNBm9kDAdZdOSCpbJQTZPeHQoPrQSIjH4UH8rz7OThPfRch0Tn3PQBNqFVEAnCkB4KQIFuy6Y/0UfISlCqnmc5aI9OQ9B/lU/H4r4q6YOOEC36pPo7w6rCU8Ruwp7TbSBwMxdRDQVijzbRtX0adVHjAGJg2xtLkfcy2h4ihJwEQqsheJXn5A0nBoeulhgzKfgYpHYXSEA/ZB9uuTCnSsLj6Mug2QBZz7FZOV6w6yIcusyaagbYSXfdAvS3rSPzrjkt5Y4Hd5cMVe3aDlAdznexivPcvdC9ZRaiGsY+UFGqEwhPCTwefUSGYx0hHlptcEST50XUEE5W31eKoUTShjrDJgyZeJbD/wu2gXJlEtu9Yh3O9uIu/Nbb3XXHI3GkNQwmjsVIvJVOzJtVO8NmA=
+  on:
+    branch: master
+    tags: true
+    repo: pushrocks/gulp-jsonjade
