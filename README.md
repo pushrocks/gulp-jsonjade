@@ -1,6 +1,10 @@
 # gulp-jsonjade
 Accepts json as file content and a jade template as parameter and outputs json at file.data and jade at file.content.
 
+## build status
+[![Build Status](https://travis-ci.org/pushrocks/gulp-jsonjade.svg?branch=master)](https://travis-ci.org/pushrocks/gulp-jsonjade)
+
+## how to use
 Example
 ```javascript
 example here
