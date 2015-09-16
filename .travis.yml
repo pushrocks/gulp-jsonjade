@@ -1,5 +1,5 @@
 language: node_js
-before_install:
+before_script:
   - nvm install stable
   - node -v
   - npm -v
