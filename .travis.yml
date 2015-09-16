@@ -2,6 +2,10 @@ language: node_js
 before_install:
   - nvm install stable
   - node -v
+  - npm -v
+  - npm install -g gulp
+  - npm install gulp-typescript
+  - (cd ts/compile/ && gulp)
 deploy:
   provider: npm
   email: npm@smart-coordination.com
