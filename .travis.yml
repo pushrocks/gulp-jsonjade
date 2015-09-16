@@ -5,8 +5,6 @@ before_install:
   - npm -v
   - npm install -g gulp
   - npm install gulp-typescript
-  - source ~/.bashrc
-  - (cd ts/compile/ && gulp)
 deploy:
   provider: npm
   email: npm@smart-coordination.com
