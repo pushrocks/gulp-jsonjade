@@ -37,10 +37,10 @@ module.exports = function (jadeTemplate, jsonObjectName, mojo) {
         jsonString = String(file.contents);
         //create file.data in case it doesn't exist
         if (file.hasOwnProperty('data')) {
-            console.log("hey, file.data exists. Cool!");
+            mojo.log("hey, file.data exists. Cool!");
         }
         else {
-            console.log('file.data does not exist, so we make it!');
+            mojo.log('file.data does not exist, so we make it!');
             file.data = {};
         }
         //make mojo settings available for jade through mojo.something
@@ -48,7 +48,7 @@ module.exports = function (jadeTemplate, jsonObjectName, mojo) {
             file.data.mojo = mojo.settings;
         }
         //make blog data available for jade through data.blog
-        console.log('jsondata will be appended to ', jsonObjectName);
+        mojo.log('jsondata will be appended to ' + jsonObjectName);
         file.data.[jsonObjectName] = JSON.parse(jsonString);
         // now that we have the original json moved to file.data we replace file.contents
         file.contents = new Buffer(jadeTemplate.content);
