@@ -1,6 +1,5 @@
 /// <reference path="typings/tsd.d.ts" />
-var path, through;
-mojoActive;
+var path, through, mojoActive;
 through = require("through2");
 path = require("path");
 module.exports = function (jadeTemplate, jsonObjectName, mojo) {
