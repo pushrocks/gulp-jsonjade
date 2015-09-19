@@ -1,11 +1,11 @@
 language: node_js
 before_install:
-  - nvm install stable
-  - node -v
-  - npm -v
-  - npm install -g gulp
-  - npm install gulp
-  - npm install gulp-typescript
+- nvm install stable
+- node -v
+- npm -v
+- npm install -g gulp
+- npm install gulp
+- npm install gulp-typescript
 deploy:
   provider: npm
   email: npm@smart-coordination.com
@@ -14,3 +14,6 @@ deploy:
   on:
     tags: true
     repo: pushrocks/gulp-jsonjade
+notifications:
+  slack:
+    secure: IyS9S/rmR25k3z1tgXIkHz48X4zpW+4R8WY8VKq3LxwRsZ2nhsfJyl8f97NpC8zKSVwtPMVb2v3cskLMfqZfPA1p8N+z4e7v/pSlAfyVQBNkyuvSZC/Hg30h0GfrGij3qpcEf6VrvdngY7MdtfmlSX61rdhYJIB6Sw3XIZg4RFE/T8G/E9mipzcdRbHYjSdVe27kmAF6dOZI/mMCtMUylHYHh5ICywEWFbS0FVogvFRL0n8LgFlV5axFo1tdfX0YtNm6e6aCTLtMYPBUVSPUGm+nPRmZqzA/bpqgXcG80zO7zaj0Uc7tsezKLZYilK9nMV1pgGpq4v4vn6E5ULWX1BXi/T7HCDZdoh12BytbFALXkNRx1i8pBXWDOoYUTuoNgFVUoFBSsAIwCNTOExCWXsPvlTYypNYaNEIJ66GGmjyW+I0egI5IJ5craA0L9prnSzCnTSh7SmAV0/PEXJ5YQqIjyNUX6kvZl6Ti2KlXd/c+znKG1YxO19WitH5wqsmlTJSDvw7BRS4ObdEcWlHoqSfBBgfoWdnYUJ+Q8lkoupo0fnxnC9UmHRuQlHQLRq39vAc8ty4uGYuvwQ+qz6CG+3fZ1xNXSL0Gtb7D0PNP5pLXJykqxaWHeErxRS1oCGiagqhXBw20Yrav1/sZ3xO1u+g9/TfcsLKNAl5bAzMHznE=
