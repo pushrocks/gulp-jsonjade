@@ -36,14 +36,20 @@ module.exports = function (jadeTemplate, jsonObjectName, mojo) {
         //make sure we make the json data available through the file.data object
         jsonString = String(file.contents);
         //create file.data in case it doesn't exist
-        file.data = file.data | {};
+        if (file.hasOwnProperty('data')) {
+            console.log("hey, file.data exists. Cool!");
+        }
+        else {
+            console.log('file.data does not exist, so we make it!');
+            file.data = {};
+        }
         //make mojo settings available for jade through mojo.something
         if (mojoActive) {
             file.data.mojo = mojo.settings;
         }
         //make blog data available for jade through data.blog
+        console.log('jsondata will be appended to ', jsonObjectName);
         file.data.[jsonObjectName] = JSON.parse(jsonString);
-        file.data.[jsonObjectName].markdown = file.data.blog.body;
         // now that we have the original json moved to file.data we replace file.contents
         file.contents = new Buffer(jadeTemplate.content);
         // for jade to work properly we also have to update the file.path so that
