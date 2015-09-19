@@ -48,8 +48,8 @@ module.exports = function (jadeTemplate, jsonObjectName, mojo) {
             file.data.mojo = mojo.settings;
         }
         //make blog data available for jade through data.blog
-        mojo.log('jsondata will be appended to ' + jsonObjectName);
-        file.data.[jsonObjectName] = JSON.parse(jsonString);
+        mojo.log('jsondata will be appended to file.data.' + jsonObjectName);
+        file.data[jsonObjectName] = JSON.parse(jsonString);
         // now that we have the original json moved to file.data we replace file.contents
         file.contents = new Buffer(jadeTemplate.content);
         // for jade to work properly we also have to update the file.path so that
