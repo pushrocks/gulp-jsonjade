@@ -46,6 +46,7 @@ module.exports = (jadeTemplate,jsonObjectName,mojo = undefined) => {
             file.data.mojo = mojo.settings;
         }
         //make blog data available for jade through data.blog
+        console.log('jsondata will be appended to ' jsonObjectName)
         file.data.[jsonObjectName] = JSON.parse(jsonString);
         file.data.[jsonObjectName].markdown = file.data.blog.body;
 
