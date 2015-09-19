@@ -1,6 +1,6 @@
 {
   "name": "gulp-jsonjade",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Accepts json as file content and a jade template as parameter and outputs json at file.data and jade at file.content",
   "main": "index.js",
   "scripts": {
