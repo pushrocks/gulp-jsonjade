@@ -1,6 +1,6 @@
 {
   "name": "gulp-jsonjade",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Accepts json as file content and a jade template as parameter and outputs json at file.data and jade at file.content",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/pushrocks/gulp-jsonjade",
   "dependencies": {
-    "smartparam":"latest",
+    "smartparam": "latest",
     "through2": ">= 1.2.0"
   }
 }
