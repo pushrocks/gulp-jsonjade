@@ -1,8 +1,10 @@
 /// <reference path="typings/tsd.d.ts" />
-var path, through, mojoActive;
+var through = require("through2");
+var path = require("path");
+var smartparam = require("smartparam");
 
-through = require("through2");
-path = require("path");
+var mojoActive:boolean = true;
+
 
 module.exports = (jadeTemplate,jsonObjectName,mojo = undefined) => {
     /* -------------------------------------------------------------------------
@@ -40,12 +42,7 @@ module.exports = (jadeTemplate,jsonObjectName,mojo = undefined) => {
         //make sure we make the json data available through the file.data object
         jsonString = String(file.contents);
         //create file.data in case it doesn't exist
-        if(file.hasOwnProperty('data')){
-            mojo.log("hey, file.data exists. Cool!");
-        } else {
-            mojo.log('file.data does not exist, so we make it!');
-            file.data = {}
-        }
+        smartparam(file,'data');
         //make mojo settings available for jade through mojo.something
         if (mojoActive) {
             file.data.mojo = mojo.settings;
