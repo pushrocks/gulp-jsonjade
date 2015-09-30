@@ -1,4 +1,5 @@
 /// <reference path="typings/tsd.d.ts" />
+var gutil = require("gulp-util");
 var through = require("through2");
 var path = require("path");
 var smartparam = require("smartparam");
