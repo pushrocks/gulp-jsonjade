@@ -1,3 +1,5 @@
-ts/typings
 .idea/
 .settings/
+
+/ts/*.js
+/ts/*.js.map

@@ -4,30 +4,8 @@ var through = require("through2");
 var path = require("path");
 var smartparam = require("smartparam");
 
-var mojoActive:boolean = true;
 
-
-module.exports = (jadeTemplate,jsonObjectName,mojo = undefined) => {
-    /* -------------------------------------------------------------------------
-    ------------------------- helper functions ----------------------------------
-    --------------------------------------------------------------------------
-    */
-    
-    if (mojo != undefined) {
-        mojo.log("now prepocessing blog");
-        mojoActive = true;
-    } else {
-        console.log('you do not seem to use mojo.io');
-        mojo = {}
-        mojo.log = function(logthis) {
-            console.log(logthis);
-        }
-    }
-
-    /*--------------------------------------------------------------------------
-    ---------------------- returned stream --------------------------------------
-    --------------------------------------------------------------------------
-    */
+module.exports = (jadeTemplate,jsonObjectName) => {
 
     return through.obj((file, enc, cb) => {
         var jsonString, localNameStore;
@@ -36,31 +14,20 @@ module.exports = (jadeTemplate,jsonObjectName,mojo = undefined) => {
             return;
         }
         if (file.isStream()) {
-            mojo.log("streaming not supported");
+            console.log("streaming not supported");
             return;
         }
 
-        //make sure we make the json data available through the file.data object
-        jsonString = String(file.contents);
-        //create file.data in case it doesn't exist
-        smartparam(file,'data');
-        //make mojo settings available for jade through mojo.something
-        if (mojoActive) {
-            file.data.mojo = mojo.settings;
-        }
-        //make blog data available for jade through data.blog
-        mojo.log('jsondata will be appended to file.data.' + jsonObjectName);
-        file.data[jsonObjectName] = JSON.parse(jsonString);
-
-        // now that we have the original json moved to file.data we replace file.contents
-        file.contents = new Buffer(jadeTemplate.content);
+        jsonString = String(file.contents); //store current file contents as string
+        smartparam.smartAdd(file,'data'); //create file.data in case it doesn't exist
+        file.data[jsonObjectName] = JSON.parse(jsonString); //make data available for jade through data.[jsonObjectName]
+        file.contents = new Buffer(jadeTemplate.content); //replace file.contents
 
         // for jade to work properly we also have to update the file.path so that
         // extends and includes from the template will work.
         localNameStore = path.parse(file.path).name;
         file.base = jadeTemplate.base;
         file.path = jadeTemplate.base + "/" + localNameStore;
-        //run callback function to signal end of plugin process.
-        return cb(null, file);
+        return cb(null, file); //run callback to signal end of plugin process.
     });
 };
