@@ -1,5 +1,6 @@
 .idea/
 .settings/
 
-/ts/*.js
-/ts/*.js.map
+ts/*.js
+ts/*.js.map
+node_modules/
