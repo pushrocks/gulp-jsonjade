@@ -5,7 +5,7 @@ var path = require("path");
 var smartparam = require("smartparam");
 
 
-module.exports = (jadeTemplate,jsonObjectName) => {
+module.exports = (vinylFileArg,fileAttributeName) => {
 
     return through.obj((file, enc, cb) => {
         var jsonString, localNameStore;
@@ -20,14 +20,14 @@ module.exports = (jadeTemplate,jsonObjectName) => {
 
         jsonString = String(file.contents); //store current file contents as string
         smartparam.smartAdd(file,'data'); //create file.data in case it doesn't exist
-        file.data[jsonObjectName] = JSON.parse(jsonString); //make data available for jade through data.[jsonObjectName]
-        file.contents = new Buffer(jadeTemplate.content); //replace file.contents
+        file.data[fileAttributeName] = JSON.parse(jsonString); //make data available for jade through data.[fileAttributeName]
+        file.contents = new Buffer(vinylFileArg.content); //replace file.contents
 
         // for jade to work properly we also have to update the file.path so that
         // extends and includes from the template will work.
         localNameStore = path.parse(file.path).name;
-        file.base = jadeTemplate.base;
-        file.path = jadeTemplate.base + "/" + localNameStore;
+        file.base = vinylFileArg.base;
+        file.path = vinylFileArg.base + "/" + localNameStore;
         return cb(null, file); //run callback to signal end of plugin process.
     });
 };
