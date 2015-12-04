@@ -4,10 +4,11 @@
   "description": "Accepts json as file content and a jade template as parameter and outputs json at file.data and jade at file.content",
   "main": "index.js",
   "scripts": {
-    "test": "cd ts/compile && node compile.js",
+    "test": "(cd ts/compile && node compile.js) && (node test.js)",
     "reinstall": "(rm -r node_modules && npm install)",
     "release": "(npm test) && (git pull origin master && npm version patch && git push origin master && git checkout release && git merge master && git push origin release && git checkout master)",
-    "startdev": "(git checkout master && git pull origin master)"
+    "update": "(git checkout master && git pull origin master && npm install)",
+    "upgrade": "(npm run update) && (ncu upgradeAll && npm install)"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,8 @@
   "devDependencies": {
     "beautylog": "1.0.6",
     "gulp": "3.9.0",
-    "gulp-typescript": "2.9.2"
+    "gulp-jade": "^1.1.0",
+    "gulp-typescript": "2.10.0",
+    "vinyl-file": "^1.3.0"
   }
 }
