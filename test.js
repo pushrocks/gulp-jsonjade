@@ -1,5 +1,6 @@
 /// <reference path="typings/tsd.d.ts" />
 var plugins = {
+    beautylog: require("beautylog")("os"),
     gulp: require("gulp"),
     jade: require("gulp-jade"),
     util: require("gulp-util"),
@@ -8,7 +9,8 @@ var plugins = {
     gulpInspect: require("gulp-inspect")
 };
 var jadeTemplate = plugins.vinylFile.readSync("./test/test.jade");
-plugins.gulp.task("default", function () {
+var noJadeTemplate = {};
+plugins.gulp.task("check1", function () {
     var stream = plugins.gulp.src("./test/test.json")
         .pipe(plugins.jsonjade(jadeTemplate))
         .pipe(plugins.jade({
@@ -18,5 +20,12 @@ plugins.gulp.task("default", function () {
         .pipe(plugins.gulpInspect(true))
         .pipe(plugins.gulp.dest("./test/result/"));
     return stream;
+});
+plugins.gulp.task("check2", function () {
+    var stream = plugins.gulp.src("./test/test.json")
+        .pipe(plugins.jsonjade(noJadeTemplate));
+});
+plugins.gulp.task("default", ["check1", "check2"], function () {
+    plugins.beautylog.success("Test passed");
 });
 plugins.gulp.start.apply(plugins.gulp, ['default']);

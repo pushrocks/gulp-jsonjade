@@ -26,10 +26,12 @@
   },
   "homepage": "https://github.com/pushrocks/gulp-jsonjade",
   "dependencies": {
+    "beautylog": "1.0.6",
     "gulp-inspect": "0.0.6",
     "gulp-util": "3.0.7",
     "smartparam": "0.0.7",
-    "through2": "2.0.0"
+    "through2": "2.0.0",
+    "vinyl": "1.1.0"
   },
   "devDependencies": {
     "beautylog": "1.0.6",

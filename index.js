@@ -1,9 +1,11 @@
 /// <reference path="typings/tsd.d.ts" />
 var plugins = {
+    beautylog: require("beautylog")("os"),
     gutil: require("gulp-util"),
     through: require("through2"),
     path: require("path"),
-    smartparam: require("smartparam")
+    smartparam: require("smartparam"),
+    vinyl: require("vinyl")
 };
 module.exports = function (vinylFileArg, fileAttributeName, debugArg) {
     if (fileAttributeName === void 0) { fileAttributeName = "undefined"; }
@@ -15,7 +17,11 @@ module.exports = function (vinylFileArg, fileAttributeName, debugArg) {
             return;
         }
         if (file.isStream()) {
-            console.log("streaming not supported");
+            plugins.beautylog.error("gulp-jsonjade: streaming not supported");
+            return;
+        }
+        if (!plugins.vinyl.isVinyl(vinylFileArg)) {
+            plugins.beautylog.error("gulp-jsonjade: vinylFileArg is not a vinyl file");
             return;
         }
         jsonString = String(file.contents); //store current file contents as string
