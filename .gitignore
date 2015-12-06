@@ -5,3 +5,5 @@ ts/*.js
 ts/*.js.map
 node_modules/
 npm-debug.log
+
+test/result/
