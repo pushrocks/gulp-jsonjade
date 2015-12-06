@@ -5,8 +5,9 @@ var plugins = {
     path: require("path"),
     smartparam: require("smartparam")
 };
-module.exports = function (vinylFileArg, fileAttributeName) {
+module.exports = function (vinylFileArg, fileAttributeName, debugArg) {
     if (fileAttributeName === void 0) { fileAttributeName = "undefined"; }
+    if (debugArg === void 0) { debugArg = false; }
     return plugins.through.obj(function (file, enc, cb) {
         var jsonString, localNameStore;
         if (file.isNull() === true) {

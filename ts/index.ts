@@ -6,7 +6,7 @@ var plugins = {
     smartparam:require("smartparam")
 };
 
-module.exports = (vinylFileArg,fileAttributeName:string = "undefined") => {
+module.exports = (vinylFileArg,fileAttributeName:string = "undefined", debugArg = false) => {
 
     return plugins.through.obj((file, enc, cb) => {
         var jsonString, localNameStore;
