@@ -42,9 +42,10 @@ module.exports = function (vinylFileArg, fileAttributeName, debugArg) {
         // extends and includes from the template will work.
         // file.base and file.path only defer by the addtion of the filename.
         // This results in a flat folder hierarchy.
+        // We are working only with file.path for path discovery since file.base is irrelevant for jade and adds confusion.
         localNameStore = plugins.path.parse(file.path).name;
-        file.base = vinylFileArg.base;
-        file.path = vinylFileArg.base + "/" + localNameStore;
+        file.base = plugins.path.parse(vinylFileArg.path).dir;
+        file.path = plugins.path.join(file.base, localNameStore);
         return cb(null, file); //run callback to signal end of plugin process.
     });
 };
