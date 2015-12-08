@@ -33,10 +33,10 @@ module.exports = function (vinylFileArg, fileAttributeName, debugArg) {
             file.data = JSON.parse(jsonString);
         }
         if (Buffer.isBuffer(file.contents)) {
-            file.contents = vinylFileArg.contents;
+            file.contents = vinylFileArg.contents; //if file.contents already is Buffer
         }
         else {
-            file.contents = new Buffer(vinylFileArg.content); //replace file.contents
+            file.contents = new Buffer(vinylFileArg.content); // if file.contents is String
         }
         // for jade to work properly we also have to update the file.path so that
         // extends and includes from the template will work.

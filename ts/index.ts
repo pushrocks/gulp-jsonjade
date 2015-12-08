@@ -35,10 +35,10 @@ module.exports = (vinylFileArg,fileAttributeName:string = "undefined", debugArg 
             file.data = JSON.parse(jsonString);
         }
 
-        if (Buffer.isBuffer(file.contents)){
-            file.contents = vinylFileArg.contents;
+        if (Buffer.isBuffer(file.contents)){ //replace file.contents
+            file.contents = vinylFileArg.contents; //if file.contents already is Buffer
         } else {
-            file.contents = new Buffer(vinylFileArg.content); //replace file.contents
+            file.contents = new Buffer(vinylFileArg.content); // if file.contents is String
         }
 
 
